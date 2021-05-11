@@ -34,18 +34,19 @@ public class Main {
 
     // helper function to check for the current quantity of a selected item
     private int checkNumItem(String item) throws SQLException {
-        String query = "select * from inventory where product_name=?";
+        String query = "select * from inventory where lower(product_name)=?";
         PreparedStatement statement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-        statement.setString(1, item);
+        statement.setString(1, item.toLowerCase());
         ResultSet resultSet = statement.executeQuery();
+        Inventory inventory = new Inventory();
 
-        resultSet.first(); // because we want to get the most recent inventory
+        while (resultSet.next()){    // because we want to get the most recent inventory
+            int id = resultSet.getInt("product_id");
+            String name = resultSet.getString("product_name");
+            int quantity = resultSet.getInt("quantity");
+            inventory = new Inventory(id, name, quantity);
+        }
 
-        int id = resultSet.getInt("product_id");
-        String name = resultSet.getString("product_name");
-        int quantity = resultSet.getInt("quantity");
-
-        Inventory inventory = new Inventory(id, name, quantity);
         return inventory.getQuantity();
     }
 
@@ -216,7 +217,8 @@ public class Main {
             case 2: {
                 System.out.println( "Enter the name of the item you want to check for: ");
                 String item = input.next();
-                main.checkNumItem(item);
+                int num = main.checkNumItem(item);
+                System.out.println(num);
                 break;
             }
             case 3:{

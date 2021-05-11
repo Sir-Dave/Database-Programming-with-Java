@@ -14,6 +14,8 @@ public class Inventory {
         this.quantity = quantity;
     }
 
+    public Inventory(){}
+
     public Inventory(int productId, String name, int quantity, LocalDate date) {
         this.productId = productId;
         this.date = date;
