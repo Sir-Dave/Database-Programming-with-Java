@@ -79,7 +79,7 @@ public class Main {
         if (!isCustomerExists(name)){
             String query = "insert into customers(customer_name) values(?)";
             PreparedStatement statement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            statement.setString(2, name);
+            statement.setString(1, name);
             statement.execute();
         }
     }
@@ -127,6 +127,7 @@ public class Main {
         String userName = input.nextLine();
         int userId, quantity;
         try{
+
             userId = findCustomerById(userName);
         }
         catch (SQLException e){
