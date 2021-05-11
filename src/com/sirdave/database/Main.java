@@ -39,7 +39,8 @@ public class Main {
         statement.setString(1, item);
         ResultSet resultSet = statement.executeQuery();
 
-        resultSet.last(); // because we want to get the most recent inventory
+        resultSet.first(); // because we want to get the most recent inventory
+
         int id = resultSet.getInt("product_id");
         String name = resultSet.getString("product_name");
         int quantity = resultSet.getInt("quantity");
@@ -144,6 +145,7 @@ public class Main {
                 System.out.println("How many " + itemName+ "(s) do you want to order?: ");
                 quantity = input.nextInt();
                 Order order = new Order(itemName, quantity);
+                orderList.clear();
                 orderList.add(order);
                 makeOrder(userId, orderList);
             }
