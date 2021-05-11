@@ -3,14 +3,12 @@ package com.sirdave.database.Models;
 public class Product {
     private int id;
     private String name;
-    private int quantity;
-    private double amount;
+    private double price;
 
-    public Product(int id, String name, int quantity, double amount){
+    public Product(int id, String name, double price){
         this.id = id;
         this.name = name;
-        this.quantity = quantity;
-        this.amount = amount;
+        this.price = price;
     }
 
     public int getId() {
@@ -29,19 +27,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public double getPrice() {
+        return price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
