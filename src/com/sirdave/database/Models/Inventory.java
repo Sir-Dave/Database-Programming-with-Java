@@ -1,33 +1,48 @@
 package com.sirdave.database.Models;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Inventory {
-    private int id;
-    private List<Product> products;
+    private int productId;
+    private String name;
+    private int quantity;
     private LocalDate date;
 
-    public Inventory(int id, List<Product> products, LocalDate date) {
-        this.id = id;
-        this.products = products;
+    public Inventory(int productId, String name, int quantity) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+    }
+
+    public Inventory(int productId, String name, int quantity, LocalDate date) {
+        this.productId = productId;
         this.date = date;
+        this.name = name;
+        this.quantity = quantity;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public String getName() {
+        return name;
     }
 
-    public int getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public LocalDate getDate() {

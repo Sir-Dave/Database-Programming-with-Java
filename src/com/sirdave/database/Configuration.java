@@ -11,11 +11,10 @@ public class Configuration {
     private static final String user = System.getenv("DB_USER");
     private static final String password = System.getenv("DB_PASSWORD");
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to the PostgreSQL server successfully.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
