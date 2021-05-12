@@ -1,23 +1,49 @@
 package com.sirdave.database.Models;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Sale {
     private int id;
-    private List<Product> products;
+    private int customerId;
+    private int productId;
+    private int quantity;
     private double amount;
     private double discount;
     private LocalDate date;
-    private Customer customer;
 
-    public Sale(int id, List<Product> products, double amount, double discount, LocalDate date, Customer customer) {
+    public Sale(int id, int customerId, int productId, int quantity,
+                double discount, double amount, LocalDate date) {
         this.id = id;
-        this.products = products;
+        this.customerId = customerId;
+        this.productId = productId;
+        this.quantity = quantity;
         this.amount = amount;
         this.discount = discount;
         this.date = date;
-        this.customer = customer;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getId() {
@@ -26,22 +52,6 @@ public class Sale {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public void setProducts(List<Product> products) {
-        this.products = products;
     }
 
     public double getAmount() {
